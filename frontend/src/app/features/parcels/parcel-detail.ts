@@ -7,12 +7,13 @@ import { HarvestPlan, Parcel, TreeCountResult, YieldResult } from '../../core/ap
 import { ParcelService } from '../../core/api/parcel.service';
 import { errorMessage, fileFrom } from '../../shared/errors';
 import { frNumber } from '../../shared/format';
+import { AiExplain } from '../../shared/ai-explain';
 import { MockBadge } from '../../shared/mock-badge';
 import { IrrigationPanel } from '../irrigation/irrigation-panel';
 
 @Component({
   selector: 'app-parcel-detail',
-  imports: [MockBadge, IrrigationPanel],
+  imports: [MockBadge, IrrigationPanel, AiExplain],
   template: `
     @if (parcel(); as p) {
       <div class="page-header">
@@ -59,6 +60,7 @@ import { IrrigationPanel } from '../irrigation/irrigation-panel';
           @if (y.scope === 'NATIONAL') {
             <p class="footnote">Rendement national (FAOSTAT + météo ERA5) appliqué à la surface de la parcelle.</p>
           }
+          <app-ai-explain module="M3" [result]="y" />
         }
       </section>
 
@@ -73,6 +75,7 @@ import { IrrigationPanel } from '../irrigation/irrigation-panel';
           @if (t.annotatedImageBase64) {
             <img class="preview" [src]="'data:image/png;base64,' + t.annotatedImageBase64" alt="Arbres détectés" />
           }
+          <app-ai-explain module="M6" [result]="t" />
         }
       </section>
 

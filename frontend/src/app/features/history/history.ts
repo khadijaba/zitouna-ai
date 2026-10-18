@@ -49,7 +49,7 @@ export class History implements OnInit {
   private readonly ai = inject(AiService);
 
   protected readonly types: PredictionType[] = [
-    'DISEASE', 'IRRIGATION', 'YIELD', 'PRICE', 'CHAT', 'TREE_COUNT', 'HARVEST_PLAN',
+    'DISEASE', 'IRRIGATION', 'YIELD', 'PRICE', 'CHAT', 'TREE_COUNT', 'HARVEST_PLAN', 'EXPLAIN',
   ];
   protected readonly page = signal<PageResponse<PredictionRecord> | null>(null);
   protected readonly error = signal<string | null>(null);

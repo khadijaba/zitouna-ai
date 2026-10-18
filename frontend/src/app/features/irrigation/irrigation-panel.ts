@@ -4,12 +4,13 @@ import { AiService } from '../../core/api/ai.service';
 import { IrrigationResult } from '../../core/api/models';
 import { errorMessage } from '../../shared/errors';
 import { frDay, frNumber } from '../../shared/format';
+import { AiExplain } from '../../shared/ai-explain';
 import { MockBadge } from '../../shared/mock-badge';
 
 /** M2 · Irrigation plan + frost / heatwave alerts for one parcel. Loads itself when the parcel or horizon changes. */
 @Component({
   selector: 'app-irrigation-panel',
-  imports: [MockBadge],
+  imports: [MockBadge, AiExplain],
   template: `
     <section class="card">
       <div class="card-head">
@@ -82,6 +83,7 @@ import { MockBadge } from '../../shared/mock-badge';
             ET₀ prévue par le modèle {{ r.modelVersion }} (LSTM) · pluie et températures : prévisions Open-Meteo.
           }
         </p>
+        <app-ai-explain module="M2" [result]="r" />
       }
     </section>
   `,

@@ -29,10 +29,11 @@ PROVIDERS = {
 # gemini-3.5-flash "thinks" by default, which eats the token budget: reasoning_effort=none turns it off.
 # The lite models do not think and reject that parameter. Same for qwen on Groq (~0.4 s per answer);
 # groq/openai/gpt-oss-120b was tried and left out: it invented figures and mixed scripts.
+# gemini-2.5-flash was retired by Google for new users (HTTP 404, October 2026): replaced by gemini-3.8-flash.
 DEFAULT_CHAIN = [
     {"provider": "gemini", "model": "gemini-3.5-flash", "extra": {"reasoning_effort": "none"}},
     {"provider": "groq", "model": "qwen/qwen3.8-27b", "extra": {"reasoning_effort": "none"}},
-    {"provider": "gemini", "model": "gemini-2.5-flash", "extra": {"reasoning_effort": "none"}},
+    {"provider": "gemini", "model": "gemini-3.8-flash", "extra": {"reasoning_effort": "none"}},
     {"provider": "gemini", "model": "gemini-3.5-flash-lite"},
     {"provider": "gemini", "model": "gemini-flash-lite-latest"},
     {"provider": "openrouter", "model": "meta-llama/llama-3.3-70b-instruct:free"},
@@ -94,11 +95,12 @@ class LlmRouter:
         return bool(self.models)
 
     def complete(self, messages: list[dict], temperature: float = 0.3,
-                 accept: Callable[[str], bool] | None = None) -> Completion:  # fmt: skip
-        """accept: optional check of the answer text; a rejected answer moves on to the next model."""
+                 accept: Callable[[str], bool] | None = None, prefer: str | None = None) -> Completion:  # fmt: skip
+        """accept: optional check of the answer text; a rejected answer moves on to the next model.
+        prefer: model name tried first (e.g. the LLM dedicated to a module); the rest of the chain stays as fallback."""
         started = time.monotonic()
         errors = []
-        for m in self.models:
+        for m in sorted(self.models, key=lambda m: m.model != prefer):
             now = time.monotonic()
             if m.cooldown_until > now:
                 errors.append(f"{m.name}: cooling down")

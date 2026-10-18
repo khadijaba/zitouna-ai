@@ -469,6 +469,41 @@ input[type='file'] {
   }
 }
 
+/* « Expliquer avec l'IA » (LLM explanation under every module result) */
+.ai-explain {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+.ai-explain-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-ai {
+  background: var(--gold);
+  color: var(--olive-deep);
+  &:hover {
+    background: #b58f2c;
+  }
+}
+.ai-explain-box {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--gold-light);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  line-height: 1.5;
+  p {
+    margin: 0;
+  }
+}
+.ai-explain-by {
+  margin-top: 6px !important;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 .badge {
   display: inline-block;
   font-size: 0.7rem;

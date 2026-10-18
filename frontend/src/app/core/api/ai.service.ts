@@ -5,6 +5,9 @@ import {
   ChatRequest,
   ChatResponse,
   DiseaseResult,
+  ExplainLanguage,
+  ExplainModule,
+  ExplainResult,
   HarvestPlan,
   IrrigationResult,
   PageResponse,
@@ -57,6 +60,11 @@ export class AiService {
   /** M6 -> M3 -> M4. Without image, the parcel's saved tree count is used. */
   harvestPlan(parcelId: number, image?: File) {
     return this.http.post<HarvestPlan>(`/api/parcels/${parcelId}/harvest-plan`, image ? imageForm(image) : null);
+  }
+
+  /** « Expliquer avec l'IA »: an LLM explains the result a module just returned. */
+  explain(module: ExplainModule, result: unknown, language: ExplainLanguage = 'fr') {
+    return this.http.post<ExplainResult>('/api/ai/explain', { module, result, language });
   }
 
   history(type?: PredictionType, page = 0) {

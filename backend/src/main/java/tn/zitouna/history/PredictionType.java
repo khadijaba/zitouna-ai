@@ -7,5 +7,6 @@ public enum PredictionType {
     PRICE,         // M4
     CHAT,          // M5
     TREE_COUNT,    // M6
-    HARVEST_PLAN   // M6 -> M3 -> M4
+    HARVEST_PLAN,  // M6 -> M3 -> M4
+    EXPLAIN        // « Expliquer avec l'IA » (LLM) on any module's result
 }

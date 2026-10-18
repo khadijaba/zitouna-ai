@@ -44,4 +44,5 @@ export const MODULE_LABELS: Record<PredictionType, string> = {
   CHAT: 'M5 · Assistant',
   TREE_COUNT: 'M6 · Comptage',
   HARVEST_PLAN: 'Plan de récolte',
+  EXPLAIN: 'Explications IA (LLM)',
 };

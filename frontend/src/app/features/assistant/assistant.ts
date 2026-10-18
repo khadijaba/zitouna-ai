@@ -5,6 +5,7 @@ import { AiService } from '../../core/api/ai.service';
 import { ChatResponse, Intent, Parcel } from '../../core/api/models';
 import { ParcelService } from '../../core/api/parcel.service';
 import { errorMessage } from '../../shared/errors';
+import { AiExplain } from '../../shared/ai-explain';
 import { MockBadge } from '../../shared/mock-badge';
 
 /** Shown on the suggestion buttons and under the replies: derja in Arabic script, like the replies. */
@@ -31,12 +32,14 @@ interface Message {
   suggestions?: Intent[];
   originalText?: string;
   answered?: boolean;
+  /** What the assistant understood and answered, for « Expliquer avec l'IA ». */
+  explainable?: object;
 }
 
 /** M5 · Derja assistant (the backend routes questions to M1-M4, M6 or the RAG) */
 @Component({
   selector: 'app-assistant',
-  imports: [FormsModule, MockBadge],
+  imports: [FormsModule, MockBadge, AiExplain],
   template: `
     <h1>Assistant</h1>
     <p class="muted">Posez votre question en derja (arabe ou arabizi) ou en français : Zitouna répond en derja, en lettres arabes.</p>
@@ -61,6 +64,9 @@ interface Message {
             </div>
           }
         </div>
+        @if (m.explainable && $last) {
+          <app-ai-explain module="M5" [result]="m.explainable" />
+        }
       } @empty {
         <p class="muted" dir="auto">Exemples : « 9adech nesgi zitouni had el jem3a? » · « قداش يشريو الزيت اليوم؟ »</p>
       }
@@ -133,7 +139,10 @@ export class Assistant implements OnInit {
 function toMessage(r: ChatResponse, originalText: string): Message {
   return r.clarify
     ? { from: 'bot', text: r.reply, intent: r.intent, mock: r.mock, suggestions: r.suggestions, originalText }
-    : { from: 'bot', text: r.reply, intent: r.intent, mock: r.mock, llm: llmName(r.generatedBy) };
+    : {
+        from: 'bot', text: r.reply, intent: r.intent, mock: r.mock, llm: llmName(r.generatedBy),
+        explainable: { question: originalText, intent: r.intent, reply: r.reply, moduleData: r.data },
+      };
 }
 
 /** "gemini/gemini-3.5-flash" -> "gemini-3.5-flash"; template replies show nothing. */

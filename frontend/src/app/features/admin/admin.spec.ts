@@ -65,7 +65,7 @@ describe('AdminDashboard', () => {
     fixture.detectChanges();
     const stats: AdminStats = {
       users: 12, admins: 1, parcels: 7, trees: 1750, areaHa: 17.5, predictions: 40, mockPredictions: 4,
-      predictionsByType: { DISEASE: 10, IRRIGATION: 8, YIELD: 6, PRICE: 6, CHAT: 5, TREE_COUNT: 3, HARVEST_PLAN: 2 },
+      predictionsByType: { DISEASE: 10, IRRIGATION: 8, YIELD: 6, PRICE: 6, CHAT: 5, TREE_COUNT: 3, HARVEST_PLAN: 2, EXPLAIN: 0 },
       last30Days: Array.from({ length: 30 }, (_, i) => ({ date: `2026-10-${String(i + 1).padStart(2, '0')}`, count: i % 4 })),
       parcelsByGovernorate: [{ governorate: 'Sfax', parcels: 5 }, { governorate: 'Sousse', parcels: 2 }],
       status: {
@@ -85,7 +85,7 @@ describe('AdminDashboard', () => {
     expect(el.textContent).toMatch(/1\s750/); // trees, French format (narrow no-break space)
     expect(el.textContent).toMatch(/90\s%/); // share of real-model predictions
     expect(el.querySelectorAll('.activity-bar')).toHaveLength(30);
-    expect(el.querySelectorAll('.hbar-row').length).toBe(7 + 2);
+    expect(el.querySelectorAll('.hbar-row').length).toBe(8 + 2); // 8 prediction types (incl. LLM explanations) + 2 governorates
     expect(el.querySelector('.pill-ok')?.textContent).toContain('Modèle réel');
     expect(el.querySelector('.pill-down')?.textContent).toContain('Hors ligne');
   });

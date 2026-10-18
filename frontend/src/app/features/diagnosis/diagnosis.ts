@@ -4,12 +4,13 @@ import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { AiService } from '../../core/api/ai.service';
 import { DiseaseResult } from '../../core/api/models';
 import { errorMessage, fileFrom } from '../../shared/errors';
+import { AiExplain } from '../../shared/ai-explain';
 import { MockBadge } from '../../shared/mock-badge';
 
 /** M1 · Leaf diseases */
 @Component({
   selector: 'app-diagnosis',
-  imports: [PercentPipe, MockBadge],
+  imports: [PercentPipe, MockBadge, AiExplain],
   template: `
     <h1>Diagnostic d'une feuille</h1>
     <p class="muted">Photographiez une feuille d'olivier, de près et bien éclairée.</p>
@@ -43,6 +44,7 @@ import { MockBadge } from '../../shared/mock-badge';
             <p class="muted">Zone utilisée par le modèle pour décider (Grad-CAM, rouge = important) :</p>
             <img class="preview" [src]="'data:image/png;base64,' + r.heatmapBase64" alt="Zone malade (Grad-CAM)" />
           }
+          <app-ai-explain module="M1" [result]="r" />
         </section>
       }
     </div>

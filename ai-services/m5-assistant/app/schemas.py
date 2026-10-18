@@ -85,3 +85,20 @@ class AnswerResponse(CamelModel):
     provider: str
     model: str
     latency_ms: int
+
+
+# ---- POST /explain: the LLM explains the result of one module in plain words ----
+
+
+class ExplainRequest(CamelModel):
+    module: Literal["M1", "M2", "M3", "M4", "M5", "M6"]
+    result: dict
+    language: Literal["fr", "derja"] = "fr"
+
+
+class ExplainResponse(CamelModel):
+    explanation: str
+    provider: str
+    model: str
+    latency_ms: int
+    fallback: bool  # True: template sentence, no LLM answered

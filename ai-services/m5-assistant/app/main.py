@@ -2,6 +2,7 @@
 
 - POST /intent: which module should answer (trained TF-IDF + SetFit ensemble)
 - POST /answer: an LLM writes the reply in derja from the facts gathered by the backend
+- POST /explain: an LLM explains in plain words the result of any module (M1-M6)
 
 Routing the question to M1-M4 / M6 is done by the Spring backend (ChatService), not here.
 """
@@ -12,10 +13,11 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
 
+from app import explain as explainer
 from app import predictor
 from app.llm import AllProvidersFailed, LlmRouter, build_chain
 from app.prompt import build_messages, is_arabic_script
-from app.schemas import AnswerRequest, AnswerResponse, IntentRequest, IntentResponse
+from app.schemas import AnswerRequest, AnswerResponse, ExplainRequest, ExplainResponse, IntentRequest, IntentResponse
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -31,8 +33,12 @@ async def lifespan(app: FastAPI):
     log.info("models ready in %.1f s (loaded=%s)", time.perf_counter() - started, app.state.ensemble is not None)
     app.state.llm = LlmRouter(build_chain())
     log.info("LLM chain: %s", [m.name for m in app.state.llm.models] or "none (no API key): template answers only")
+    # Explanations are longer than chat replies (and derja takes more time): more time per call, still under
+    # the backend's 15 s LLM timeout.
+    app.state.explain_llm = LlmRouter(build_chain(), timeout_s=8.0, deadline_s=14.0)
     yield
     app.state.llm.client.close()
+    app.state.explain_llm.client.close()
 
 
 app = FastAPI(
@@ -83,3 +89,12 @@ def answer(body: AnswerRequest, request: Request) -> AnswerResponse:
     log.info("answer intent=%s facts=%d llm=%s/%s latency_ms=%d", body.intent, len(body.facts), done.provider,
              done.model, done.latency_ms)  # fmt: skip
     return AnswerResponse(answer=done.text, provider=done.provider, model=done.model, latency_ms=done.latency_ms)
+
+
+@app.post("/explain", response_model=ExplainResponse)
+def explain(body: ExplainRequest, request: Request) -> ExplainResponse:
+    """Always 200: without any LLM the explanation is a template sentence (fallback=True)."""
+    result = explainer.explain(request.app.state.explain_llm, body)
+    log.info("explain module=%s language=%s by=%s/%s fallback=%s latency_ms=%d", body.module, body.language,
+             result.provider, result.model, result.fallback, result.latency_ms)  # fmt: skip
+    return result

@@ -154,7 +154,22 @@ export type PredictionType =
   | 'PRICE'
   | 'CHAT'
   | 'TREE_COUNT'
-  | 'HARVEST_PLAN';
+  | 'HARVEST_PLAN'
+  | 'EXPLAIN';
+
+// « Expliquer avec l'IA » (LLM explanation of any module's result)
+export type ExplainModule = 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6';
+export type ExplainLanguage = 'fr' | 'derja';
+
+export interface ExplainResult {
+  explanation: string;
+  /** "gemini", "groq"… or "template" when no LLM answered. */
+  provider: string;
+  model: string;
+  latencyMs: number;
+  /** true: template sentence built from the real figures, no LLM was available. */
+  fallback: boolean;
+}
 
 export interface PredictionRecord {
   id: number;

@@ -4,13 +4,14 @@ import { AiService } from '../../core/api/ai.service';
 import { PriceResult } from '../../core/api/models';
 import { errorMessage } from '../../shared/errors';
 import { frMonth, frNumber, frShortDate } from '../../shared/format';
+import { AiExplain } from '../../shared/ai-explain';
 import { MockBadge } from '../../shared/mock-badge';
 import { PriceChart } from '../../shared/price-chart';
 
 /** M4 · Olive-oil price forecast and sell / store advice. */
 @Component({
   selector: 'app-price',
-  imports: [MockBadge, PriceChart],
+  imports: [MockBadge, PriceChart, AiExplain],
   template: `
     <h1>Prix de l'huile d'olive</h1>
     <p class="muted">Prévision du prix et conseil : vendre maintenant ou stocker l'huile pour vendre plus tard.</p>
@@ -46,6 +47,7 @@ import { PriceChart } from '../../shared/price-chart';
         @if (r.expectedGainTnd) {
           <p>Gain estimé pour {{ num(quantity() ?? 0) }} kg : <strong>+{{ num(r.expectedGainTnd) }} {{ r.currency }}</strong></p>
         }
+        <app-ai-explain module="M4" [result]="r" />
       </section>
 
       <div class="kpis">
