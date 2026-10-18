@@ -1,0 +1,6 @@
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+# SARIMA re-fitted at start-up on models/m4/prices.csv (same versions as the training notebook).
+numpy==2.5.3
+pandas==3.0.6
+statsmodels==0.15.0

@@ -1,0 +1,11 @@
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+pillow==12.3.0
+# Classical crown detector (default, no weights needed).
+numpy==2.5.3
+opencv-python-headless==5.0.0.93
+
+# Optional, only to serve a fine-tuned YOLOv8 from models/m6/best.pt (CPU wheels keep the image small):
+# --extra-index-url https://download.pytorch.org/whl/cpu
+# ultralytics

@@ -1,0 +1,22 @@
+# Normalize line endings: the team works on Windows, Docker and CI run on Linux.
+* text=auto eol=lf
+
+# Windows scripts keep CRLF
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Shell scripts must stay LF or they break inside Docker
+mvnw text eol=lf
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.pdf binary
+*.jar binary
+
+# Notebooks: show as text in diffs, avoid noisy merges (use nbstripout, see CONTRIBUTING.md)
+*.ipynb text eol=lf linguist-detectable=false

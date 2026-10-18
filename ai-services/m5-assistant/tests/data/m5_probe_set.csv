@@ -1,0 +1,26 @@
+﻿pattern,text,intent
+P1,9adech mn ma test7a9 el olivier el kbir fil jem3a?,irrigation
+P1,قداش من شجرة نجم نزرع في نص هكتار؟,conseil_general
+P1,"3andi 60 zitouna, 9adech nest7a9 mn zit?",recolte
+P1,a3tini 3adad el sjar elli fil taswira mel drone,comptage
+P1,قداش من لتر ماء للشجرة الصغيرة في الصيف؟,irrigation
+P2,c'est quoi le meilleur fongicide lel zitoun?,maladie
+P2,wa9tech lazem nesgi ba3d ma nzra3?,irrigation
+P2,kifech na3ref el zitoun walla tayeb lel jni?,recolte
+P2,wa9tech yebda el bac?,hors_sujet
+P2,كيفاش نداوي الذبانة بطريقة طبيعية؟,maladie
+P2,c'est quoi les horaires mta3 el banque?,hors_sujet
+P3,"el zit mta3i lounou tbaddel, normal?",conseil_general
+P3,c'est quoi la différence bin zit vierge w extra vierge?,conseil_general
+P3,nbi3 taw walla le prix bech yzid?,prix_vente
+P3,قداش يشريو اليوم بالكيلو في صفاقس؟,prix_vente
+P4,chnowa na3mel bel war9 elli ta7 ba3d el zbir?,conseil_general
+P4,شنية الأخبار؟,salutation
+P4,tnajem t9olli 9adech mn chajra 3andi?,comptage
+P4,chnowa na3mel bech nwaffer fil ma?,irrigation
+P4,"el internet ma ykhdemch, chnowa na3mel?",hors_sujet
+P5,c'est quoi la météo ghodwa fi nabeul?,meteo_alerte
+P5,c'est quoi le prix du kilo d'olives?,prix_vente
+P5,c'est quoi le problème mta3 el wra9 el sfor?,maladie
+P5,c'est quoi la quantité d'eau par semaine?,irrigation
+P5,il y a de la pluie ghodwa?,meteo_alerte

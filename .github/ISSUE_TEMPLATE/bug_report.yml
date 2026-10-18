@@ -1,0 +1,32 @@
+name: Bug
+description: Something does not work as expected
+labels: ["type:bug"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      placeholder: "e.g. backend POST /api/ai/disease, frontend page /price, m4-price service"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Log in
+        2. Open a parcel
+        3. Click "Estimer la récolte"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual result
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshot
+      render: shell

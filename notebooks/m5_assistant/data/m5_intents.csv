@@ -1,0 +1,501 @@
+text,intent
+"war9 zitouni fih tba3 ka7lin, chnowa hedha?",maladie
+"el war9 bda yesfar w yta7, chbih?",maladie
+"fama no9at so8ar 3la el war9a, mardh walla?",maladie
+"zitouni fih mardh 3in el tawous, chnowa na3mel?",maladie
+"chnowa dwa mta3 el 3in mta3 el tawous?",maladie
+"el war9 wallat ta7t-ha bidha, chnowa?",maladie
+"fama 7achra tekel fil war9 mta3 el zitoun",maladie
+"el ghsoun yebsou w ymoutou, chnowa sbab?",maladie
+"fama 3o9ad fil ghsoun mta3 el zitouna",maladie
+"nheb ndawi zitouni, chnowa a7sen pesticide?",maladie
+"el 7abb mta3 el zitoun fih dhoud",maladie
+"dhebbanet el zitoun klet el sab, kifech nkafe7ha?",maladie
+"war9a fiha 7lou9 ka7la w sfra",maladie
+"nensa7 el cuivre wa9tech lel zitoun?",maladie
+"zitouni mridh, nb3athlek taswira mta3 war9a",maladie
+"el zitouna wallat tebda tenche7 men fou9",maladie
+"عندي ورق زيتون فيه تبقع كحل شنوة هذا؟",maladie
+"الورق يصفار و يطيح شنوة نعمل؟",maladie
+"زيتوني مريض شنوة الدوا؟",maladie
+"عين الطاووس كيفاش نداويها؟",maladie
+"فما حشرة تاكل في الورق متاع الزيتون",maladie
+"الغصون يبسو و الورق تحرق",maladie
+"نحب نرش الزيتون بالنحاس وقتاش؟",maladie
+"ذبابة الزيتون كلات الصابة",maladie
+"فما عقد في جذع الزيتونة",maladie
+"الحب متاع الزيتون فيه دود",maladie
+"شنوة أحسن دوا للأكاروز في الزيتون؟",maladie
+"mon olivier a des taches noires sur les feuilles",maladie
+"les feuilles de l'olivier jaunissent et tombent",maladie
+"quel traitement contre l'oeil de paon?",maladie
+"est-ce que mon olivier est malade?",maladie
+"comment lutter contre la mouche de l'olive?",maladie
+"des tumeurs sur les branches, c'est la tuberculose?",maladie
+"quel fongicide pour les oliviers en automne?",maladie
+"les feuilles sont recroquevillées, acarien?",maladie
+"traitement bouillie bordelaise olivier",maladie
+"el war9 fih ghobra bidha, mardh?",maladie
+"war9a meftou7a w fiha 7firat so8ar",maladie
+"diagnostic war9a mta3 zitoun",maladie
+"zitouni bda ytayyab el war9 9bal wa9tou",maladie
+"el 9echra mta3 el zitouna tetchala9",maladie
+"fama fetriyat fil zitoun ba3d el chta",maladie
+"chnowa sbab tsfar el war9 fil sif?",maladie
+"aculus fil zitoun kifech nna7ih?",maladie
+"9adech mn mra nesgi el zitoun fil sif?",irrigation
+"lazemni nesgi zitouni ghodwa walla le?",irrigation
+"9adech mn litre lel chajra fil jem3a?",irrigation
+"nesgi bel goutte à goutte 9adech mn se3a?",irrigation
+"el ard nechfa, nesgi taw?",irrigation
+"wa9tech a7sen wa9t lel sgi, sbe7 walla 3chiya?",irrigation
+"zitouni sghir 3amou 2 snin, 9adech nesgih?",irrigation
+"nesgi ba3d el chta walla nestanna?",irrigation
+"el ma 9lil, kifech ne9sem el sgi?",irrigation
+"9adech el ma elli test7a9ha parcelle mta3i?",irrigation
+"besoin en eau mta3 el zitoun had el jem3a",irrigation
+"nheb plan mta3 el sgi lel 7 ayem",irrigation
+"esgi marra fil jem3a ykfi?",irrigation
+"9adech nesgi 9bal el jni?",irrigation
+"el bir mta3i 9lil, nesgi kol youmin?",irrigation
+"قداش نسقي الزيتون في الصيف؟",irrigation
+"نسقي الزيتون غدوة ولا لا؟",irrigation
+"قداش من لتر للشجرة في الجمعة؟",irrigation
+"وقتاش أحسن وقت للسقي؟",irrigation
+"الأرض ناشفة نسقي توا؟",irrigation
+"زيتوني صغير قداش نسقيه؟",irrigation
+"قداش تستحق القطعة متاعي من الماء؟",irrigation
+"نحب برنامج سقي للأسبوع الجاي",irrigation
+"السقي قطرة قطرة قداش من ساعة؟",irrigation
+"الماء قليل كيفاش نقسم السقي؟",irrigation
+"combien d'eau pour un olivier par semaine?",irrigation
+"je dois irriguer mes oliviers demain?",irrigation
+"quel est le besoin en eau de ma parcelle?",irrigation
+"à quelle fréquence arroser les oliviers en été?",irrigation
+"programme d'irrigation pour les 7 prochains jours",irrigation
+"combien de litres par arbre en goutte à goutte?",irrigation
+"faut-il arroser après la pluie?",irrigation
+"irrigation des jeunes oliviers combien d'eau?",irrigation
+"est-ce que je peux arrêter l'irrigation en octobre?",irrigation
+"evapotranspiration w 9adech nesgi",irrigation
+"nesgi zitouni bel ma mel7a, mochkla?",irrigation
+"9adech mn mm lazem ntih lel zitoun?",irrigation
+"sgi tekmili fil chta lazem?",irrigation
+"fama jlid had el lila fi kairouan?",meteo_alerte
+"chnowa el ta9s ghodwa fi sfax?",meteo_alerte
+"bech tsob el chta had el jem3a?",meteo_alerte
+"fama skhana 9wiya jeya?",meteo_alerte
+"el 7rara bech toula9 45 ghodwa?",meteo_alerte
+"alerte jlid fi siliana",meteo_alerte
+"el ri7 9wiya ghodwa fi mahdia?",meteo_alerte
+"fama tabrouri had el jem3a?",meteo_alerte
+"9adech darja el 7rara fil lil fi beja?",meteo_alerte
+"météo mta3 el jem3a el jeya fi sousse",meteo_alerte
+"bech tnazel el chta 3la el zitoun ghodwa?",meteo_alerte
+"chergui jey walla le?",meteo_alerte
+"el bard bech yod5el had el lila?",meteo_alerte
+"previsions mta3 el ta9s fi gabes",meteo_alerte
+"فما جليد الليلة في القصرين؟",meteo_alerte
+"شنوة الطقس غدوة في صفاقس؟",meteo_alerte
+"باش تصب الشتاء هالجمعة؟",meteo_alerte
+"فما سخانة قوية جاية؟",meteo_alerte
+"الحرارة باش توصل 45 غدوة؟",meteo_alerte
+"الريح قوية غدوة في المهدية؟",meteo_alerte
+"فما تبروري الجمعة هاذي؟",meteo_alerte
+"قداش الحرارة في الليل في باجة؟",meteo_alerte
+"تنبيه جليد في سليانة",meteo_alerte
+"الشهيلي جاي ولا لا؟",meteo_alerte
+"il va geler cette nuit à kasserine?",meteo_alerte
+"quel temps demain à monastir?",meteo_alerte
+"risque de canicule cette semaine?",meteo_alerte
+"il va pleuvoir sur mes oliviers?",meteo_alerte
+"alerte gel pour ma parcelle",meteo_alerte
+"prévisions météo des prochains jours à nabeul",meteo_alerte
+"vent fort prévu demain?",meteo_alerte
+"températures minimales de la semaine à zaghouan",meteo_alerte
+"grêle prévue ce week-end?",meteo_alerte
+"fama 3asifa jeya?",meteo_alerte
+"el ta9s mta3 had el weekend fi tunis",meteo_alerte
+"chta 9wiya bech tji fil chamel?",meteo_alerte
+"9adech bech njib zitoun had el 3am?",recolte
+"saba mta3 had el 3am bech tkoun behya?",recolte
+"9adech mn kilo zitoun lel chajra?",recolte
+"wa9tech nebda el jni?",recolte
+"estimation mta3 el saba fil parcelle mta3i",recolte
+"9adech mn zit bech yokhrej mel saba?",recolte
+"el 3am hedha 3am saba walla 3am nedra?",recolte
+"rendement mta3 el zitoun fi sfax had el mousem",recolte
+"9adech mn tonne zitoun fi tounes had el 3am?",recolte
+"nheb na3ref saba mta3i 9adech",recolte
+"kifech na3ref el zitoun nadhej lel jni?",recolte
+"9adech mn 3amel lazemni lel jni?",recolte
+"el saba na9set 3al 3am elli fet, 3lech?",recolte
+"production mta3 el zitoun had el 3am",recolte
+"قداش باش نجيب زيتون هالعام؟",recolte
+"الصابة متاع هالعام باش تكون باهية؟",recolte
+"قداش من كيلو زيتون للشجرة؟",recolte
+"وقتاش نبدا الجني؟",recolte
+"تقدير الصابة في القطعة متاعي",recolte
+"قداش من زيت باش يخرج من الصابة؟",recolte
+"العام هذا عام صابة ولا عام ندرة؟",recolte
+"قداش الإنتاج متاع الزيتون في تونس هالموسم؟",recolte
+"كيفاش نعرف الزيتون طاب للجني؟",recolte
+"قداش يلزمني من خدام للجني؟",recolte
+"combien d'olives je vais récolter cette année?",recolte
+"estimation de la récolte de ma parcelle",recolte
+"quel rendement par arbre cette saison?",recolte
+"quand commencer la récolte des olives?",recolte
+"la production nationale d'olives cette année",recolte
+"combien d'huile avec ma récolte?",recolte
+"est-ce une bonne année pour les olives?",recolte
+"prévision de production pour la saison 2026",recolte
+"combien de kilos d'olives par hectare?",recolte
+"el jni bel mekina walla bel yed?",recolte
+"saba mta3 el sjar el kbar 9adech?",recolte
+"9adech el kilo mta3 el zit taw?",prix_vente
+"nbi3 el zitoun taw walla nestanna chwaya?",prix_vente
+"soum el zit bech yatla3?",prix_vente
+"wa9tech a7sen wa9t bech nbi3 el zit?",prix_vente
+"el s3ar mta3 el zit fil marché had el jem3a",prix_vente
+"nkhazzen el zit walla nbi3ou?",prix_vente
+"el prix mta3 el zit bech yahbet?",prix_vente
+"9adech yechriw el kilo mta3 el zitoun fil m3asra?",prix_vente
+"prévision mta3 soum el zit lel chhar el jey",prix_vente
+"nheb nbi3 1000 kilo zit, taw walla ba3d?",prix_vente
+"el s3ar ta7 barcha, nestanna?",prix_vente
+"9adech nerba7 ken nkhazzen el zit 3 chhour?",prix_vente
+"soum el zit el bio a8la?",prix_vente
+"el export mta3 el zit w el s3ar",prix_vente
+"قداش سوم الزيت توا؟",prix_vente
+"نبيع الزيتون توا ولا نستنى؟",prix_vente
+"سوم الزيت باش يطلع؟",prix_vente
+"وقتاش أحسن وقت باش نبيع الزيت؟",prix_vente
+"نخزن الزيت ولا نبيعو؟",prix_vente
+"الأسعار متاع الزيت في السوق هالجمعة",prix_vente
+"قداش يشريو الكيلو في المعصرة؟",prix_vente
+"السوم طاح برشا نستنى؟",prix_vente
+"قداش نربح كان نخزن الزيت؟",prix_vente
+"توقعات سعر الزيت للشهر الجاي",prix_vente
+"quel est le prix de l'huile d'olive aujourd'hui?",prix_vente
+"vendre maintenant ou stocker mon huile?",prix_vente
+"le prix de l'huile va-t-il augmenter?",prix_vente
+"meilleur moment pour vendre l'huile d'olive",prix_vente
+"prévision du prix de l'huile pour les prochaines semaines",prix_vente
+"combien je gagne si je stocke 3 mois?",prix_vente
+"prix du kilo d'huile extra vierge",prix_vente
+"le marché de l'huile est en baisse?",prix_vente
+"tendance des prix de l'huile tunisienne",prix_vente
+"nbi3 el zit bel litre walla bel kilo?",prix_vente
+"el s3ar fi espagne w ta2thirou 3lina",prix_vente
+"9adech mn zitouna fil parcelle mta3i?",comptage
+"a7seb el sjar mel taswira satellite",comptage
+"nheb n3add el zitoun fil 7a9l",comptage
+"3add el sjar mta3i bel drone",comptage
+"9adech mn chajra fil taswira hedhi?",comptage
+"compter mta3 el zitoun mel google earth",comptage
+"nab3athlek taswira mel fou9 a7sebli el sjar",comptage
+"el 7a9l mta3i fih 9adech mn chajra?",comptage
+"3add el zitoun lel subvention",comptage
+"kifech n3add el sjar elli 3andi bsor3a?",comptage
+"détecter el sjar fil image",comptage
+"a7seb el chjar elli fil hencir",comptage
+"قداش من زيتونة في القطعة متاعي؟",comptage
+"احسبلي الشجر من التصويرة",comptage
+"نحب نعد الزيتون بالدرون",comptage
+"قداش من شجرة في الصورة هاذي؟",comptage
+"عد الشجر من صورة الساتليت",comptage
+"نبعثلك تصويرة من فوق احسبلي الشجر",comptage
+"عدد الزيتون للدعم",comptage
+"الهنشير متاعي فيه قداش من شجرة؟",comptage
+"كيفاش نعد الشجر بسرعة؟",comptage
+"compter les oliviers sur une image drone",comptage
+"combien d'arbres dans ma parcelle?",comptage
+"détection des oliviers sur une photo satellite",comptage
+"nombre d'oliviers pour le dossier de subvention",comptage
+"comptez les arbres sur cette image",comptage
+"je veux connaître le nombre de mes oliviers",comptage
+"inventaire des arbres de mon verger",comptage
+"3add el chjar mel photo aérienne",comptage
+"el drone sawwer el 7a9l, 9adech chajra?",comptage
+"chnowa a7sen wa9t lel zbir?",conseil_general
+"kifech nzabber zitouni?",conseil_general
+"chnowa el smad elli yesta7a9ou el zitoun?",conseil_general
+"9adech mn sbitar bin zitouna w okhra?",conseil_general
+"chnowa a7sen ism zitoun lel jnoub?",conseil_general
+"kifech nzra3 zitoun jdid?",conseil_general
+"el zit el bio kifech nkhademou?",conseil_general
+"chnowa el far9 bin chemlali w chetoui?",conseil_general
+"wa9tech n7ot el smad lel zitoun?",conseil_general
+"kifech n7afedh 3al zit mta3i fil dar?",conseil_general
+"el 7rath bin el zitoun lazem?",conseil_general
+"kifech nkhazzen el zitoun 9bal el m3asra?",conseil_general
+"chnowa na3mel bel fitoura?",conseil_general
+"kifech ntawwel 3omr el zitouna?",conseil_general
+"tasmid 3odwi walla kimiyai lel zitoun?",conseil_general
+"شنوة أحسن وقت للزبير؟",conseil_general
+"كيفاش نزبر الزيتون؟",conseil_general
+"شنوة السماد اللي يستحقو الزيتون؟",conseil_general
+"قداش من متر بين زيتونة و أخرى؟",conseil_general
+"شنوة أحسن نوع زيتون للجنوب؟",conseil_general
+"كيفاش نزرع زيتون جديد؟",conseil_general
+"شنوة الفرق بين الشملالي و الشتوي؟",conseil_general
+"وقتاش نحط السماد للزيتون؟",conseil_general
+"كيفاش نحافظ على الزيت في الدار؟",conseil_general
+"الحراث بين الزيتون لازم؟",conseil_general
+"شنوة نعمل بالفيتورة؟",conseil_general
+"quand faut-il tailler les oliviers?",conseil_general
+"quel engrais pour les oliviers?",conseil_general
+"quelle distance de plantation entre les oliviers?",conseil_general
+"quelle variété d'olivier pour le sud tunisien?",conseil_general
+"comment planter un jeune olivier?",conseil_general
+"différence entre chemlali et chetoui",conseil_general
+"comment conserver l'huile d'olive?",conseil_general
+"faut-il labourer entre les oliviers?",conseil_general
+"comment passer en agriculture biologique?",conseil_general
+"que faire des grignons d'olive?",conseil_general
+"el zitoun yesta7a9 el ghbar walla le?",conseil_general
+"kifech na3mel greffe lel zitoun?",conseil_general
+"aslema",salutation
+"salam 3alikom",salutation
+"ahla bik",salutation
+"bonjour",salutation
+"bonsoir",salutation
+"marhba",salutation
+"sba7 el khir",salutation
+"mse el khir",salutation
+"chnahwelek?",salutation
+"ya3tik essa7a",salutation
+"merci barcha",salutation
+"chokran",salutation
+"salut",salutation
+"hello",salutation
+"labes?",salutation
+"aslema sadi9i",salutation
+"bonjour, labes?",salutation
+"3aslema, chkoun enti?",salutation
+"merci beaucoup",salutation
+"bslema",salutation
+"عسلامة",salutation
+"السلام عليكم",salutation
+"أهلا بيك",salutation
+"مرحبا",salutation
+"صباح الخير",salutation
+"مسا الخير",salutation
+"شنحوالك؟",salutation
+"يعطيك الصحة",salutation
+"شكرا برشا",salutation
+"بالسلامة",salutation
+"لاباس عليك؟",salutation
+"bonjour assistant",salutation
+"salam ya zitouna ai",salutation
+"au revoir",salutation
+"shokran ya khouya",salutation
+"chkoun rba7 el match el bera7?",hors_sujet
+"a3tini recette mta3 couscous",hors_sujet
+"9adech el s3a taw?",hors_sujet
+"chkoun ra2is el dawla?",hors_sujet
+"nheb nechri karhba, chnowa a7sen marka?",hors_sujet
+"7ki-li nokta",hors_sujet
+"el wifi mta3i ma ye5demch",hors_sujet
+"9adech soum el dhheb el youm?",hors_sujet
+"wa9tech el bac?",hors_sujet
+"a3tini numéro mta3 el steg",hors_sujet
+"chnowa a7sen film had el jem3a?",hors_sujet
+"kifech na3mel compte facebook?",hors_sujet
+"9adech el dollar bel dinar?",hors_sujet
+"chkoun a7sen joueur fil 3alam?",hors_sujet
+"شكون ربح الماتش البارح؟",hors_sujet
+"اعطيني وصفة كسكسي",hors_sujet
+"قداش الساعة توا؟",hors_sujet
+"نحب نشري كرهبة شنوة أحسن ماركة؟",hors_sujet
+"احكيلي نكتة",hors_sujet
+"الويفي متاعي ما يخدمش",hors_sujet
+"قداش سوم الذهب اليوم؟",hors_sujet
+"وقتاش الباك؟",hors_sujet
+"شنوة أحسن فيلم هالجمعة؟",hors_sujet
+"قداش الدولار بالدينار؟",hors_sujet
+"qui a gagné le match hier?",hors_sujet
+"donne-moi une recette de couscous",hors_sujet
+"quelle heure est-il?",hors_sujet
+"quel est le meilleur téléphone?",hors_sujet
+"raconte-moi une blague",hors_sujet
+"comment réparer ma voiture?",hors_sujet
+"quel est le cours du bitcoin?",hors_sujet
+"traduis cette phrase en anglais",hors_sujet
+"je cherche un appartement à tunis",hors_sujet
+"el train mta3 sousse wa9tech yemchi?",hors_sujet
+"chnowa el ta9s fi paris?",hors_sujet
+"zitouni war9ou yetbadel lounou, chnowa elli sar?",maladie
+"chajra mta3i fiha 3ella, kifech nda5el?",maladie
+"famma bou9 fil zitoun yekel el 7abb",maladie
+"el zitoun yta7 9bal ma ytib, mardh?",maladie
+"nraja3 dwa bio lel zitoun",maladie
+"brochure 3la amradh el zitoun",maladie
+"el war9a fiha ghobra soda kima el fa7m",maladie
+"zitouni yebes men jiha wa7da",maladie
+"traitement naturel contre la mouche de l'olive",maladie
+"psylle de l'olivier, comment traiter?",maladie
+"mes oliviers ont de la fumagine noire",maladie
+"cochenille sur l'olivier que faire?",maladie
+"الزيتونة فيها علة كيفاش ندخل؟",maladie
+"الزيتون يطيح قبل ما يطيب",maladie
+"نحب دوا بيولوجي للزيتون",maladie
+"الورقة فيها غبرة كحلة",maladie
+"الزيتونة يبسة من جيهة وحدة",maladie
+"famma dharar fil chjar ba3d el berd, mardh?",maladie
+"el ghsoun fihom no9at 7mor",maladie
+"dwa lel 7achrat mta3 el zitoun",maladie
+"esgi zitouni marrtin fil jem3a ykfi walla zayed?",irrigation
+"9adech mn ma nest7a9 lel hectare?",irrigation
+"nzid fil sgi fil chhili walla le?",irrigation
+"systeme goutte a goutte 9adech mn litre fil se3a",irrigation
+"zitouni 3atchan, nesgih?",irrigation
+"nheb na3ref besoin el ma mta3 sjari",irrigation
+"9adech mn mrat nesgi fil chhar?",irrigation
+"sgi bel ma mta3 el bir walla el sonede?",irrigation
+"wa9tech nwa9ef el sgi 9bal el jni?",irrigation
+"la quantité d'eau à donner à mes oliviers",irrigation
+"dois-je augmenter l'irrigation pendant la canicule?",irrigation
+"mes oliviers ont soif, j'arrose combien?",irrigation
+"الزيتون عطشان نسقيه؟",irrigation
+"قداش من مرة نسقي في الشهر؟",irrigation
+"نزيد في السقي في الشهيلي؟",irrigation
+"قداش من ماء للهكتار؟",irrigation
+"وقتاش نوقف السقي قبل الجني؟",irrigation
+"esgi el sjar sghar 9adech fil youm?",irrigation
+"lazem nesgi el lila walla fil nhar?",irrigation
+"plan sgi lel parcelle mta3i",irrigation
+"tsob el mtar ghodwa walla le?",meteo_alerte
+"fama berd 9wi had el jem3a?",meteo_alerte
+"darja el 7rara ghodwa 9adech?",meteo_alerte
+"el jaw bech ykoun skhoun?",meteo_alerte
+"fama khatar jlid 3al zitoun?",meteo_alerte
+"nchra el météo mta3 sidi bouzid",meteo_alerte
+"bech tkoun 3asifa fil janoub?",meteo_alerte
+"ta9s el 3 ayem el jeya",meteo_alerte
+"y a-t-il un risque de gelée demain matin?",meteo_alerte
+"la météo de la semaine pour medenine",meteo_alerte
+"fortes chaleurs prévues à tozeur?",meteo_alerte
+"il fera combien de degrés demain?",meteo_alerte
+"تصب المطر غدوة ولا لا؟",meteo_alerte
+"فما برد قوي هالجمعة؟",meteo_alerte
+"الجو باش يكون سخون؟",meteo_alerte
+"فما خطر جليد على الزيتون؟",meteo_alerte
+"طقس الثلاثة أيام الجايين",meteo_alerte
+"darjet el 7rara fil lil bech tahbet ta7t sfer?",meteo_alerte
+"chnowa ta9s el weekend fi sousse?",meteo_alerte
+"fama ghbar w ri7 ghodwa?",meteo_alerte
+"9adech mn zit bech nkharej mel zitoun mta3i?",recolte
+"el mousem hedha saba kbira?",recolte
+"9adech mn kilo nejni mel hectare?",recolte
+"tawwa wa9t el jni walla mazel?",recolte
+"rendement el zitoun 9adech fil chajra el kbira?",recolte
+"saba mta3 sfax had el 3am",recolte
+"9adech mn kilo zitoun ta3tini el chajra el wa7da?",recolte
+"el zitoun mta3i ytayyeb wa9tech?",recolte
+"combien de tonnes d'olives en tunisie cette saison?",recolte
+"rendement attendu de mes oliviers",recolte
+"date idéale pour récolter les olives",recolte
+"combien de litres d'huile par tonne d'olives?",recolte
+"الموسم هذا صابة كبيرة؟",recolte
+"قداش من كيلو نجني من الهكتار؟",recolte
+"توا وقت الجني ولا مازال؟",recolte
+"قداش من زيت باش نخرج من الزيتون متاعي؟",recolte
+"الزيتون متاعي يطيب وقتاش؟",recolte
+"9adech bech nlemm mel zitoun had el mousem?",recolte
+"estimation el saba lel 250 chajra",recolte
+"el jni mta3 had el 3am bech ykoun 9lil?",recolte
+"soum el zit fil m3asra el youm 9adech?",prix_vente
+"nbi3 el zit mta3i fil novembre walla fil mars?",prix_vente
+"el s3ar bech tetla3 fil chhour el jeya?",prix_vente
+"nkhalli el zit fil khabya w nbi3 ba3d?",prix_vente
+"9adech yjib el litre mta3 el zit?",prix_vente
+"el soum ta7 had el 3am 3lech?",prix_vente
+"chkoun yechri el zit b soum behi?",prix_vente
+"nbi3 el zitoun 7abb walla zit?",prix_vente
+"à combien se vend le litre d'huile d'olive?",prix_vente
+"dois-je garder mon huile jusqu'au printemps?",prix_vente
+"le cours de l'huile d'olive cette semaine",prix_vente
+"quand le prix de l'huile sera au plus haut?",prix_vente
+"سوم الزيت في المعصرة اليوم قداش؟",prix_vente
+"نبيع الزيت في نوفمبر ولا في مارس؟",prix_vente
+"الأسعار باش تطلع في الشهور الجاية؟",prix_vente
+"نخلي الزيت في الخابية و نبيع بعد؟",prix_vente
+"قداش يجيب اللتر متاع الزيت؟",prix_vente
+"el soum mta3 el zit fil souk el youm",prix_vente
+"nerba7 ken nbi3 ba3d chahrin?",prix_vente
+"el s3ar mta3 el zitoun 7abb fil m3asra",prix_vente
+"9adech mn chajra fil hencir mta3i? 3andi taswira",comptage
+"3add el zitoun fil 7a9l bel taswira",comptage
+"taswira mel fou9, 9adech mn zitouna?",comptage
+"nheb n3ref 9adech mn zitouna mazrou3a 3andi",comptage
+"comptage automatique mta3 el sjar",comptage
+"el drone jab taswira, 3add el chjar",comptage
+"a7sebli el zitoun fil photo satellite",comptage
+"combien d'oliviers sur cette photo aérienne?",comptage
+"compte mes arbres à partir de l'image",comptage
+"détecte les arbres dans la photo du drone",comptage
+"عد الزيتون في الحقل بالتصويرة",comptage
+"تصويرة من فوق قداش من زيتونة؟",comptage
+"نحب نعرف قداش من زيتونة مزروعة عندي",comptage
+"الدرون جاب تصويرة عد الشجر",comptage
+"احسبلي الزيتون في صورة الساتليت",comptage
+"3add el sjar fil carte satellite",comptage
+"nombre de pieds d'olivier dans mon champ",comptage
+"9adech mn chajra fil hectare mel taswira?",comptage
+"kifech nzid fil saba mta3 zitouni?",conseil_general
+"chnowa a7sen tari9a lel ghrasa?",conseil_general
+"el zitoun yesta7a9 smad azot?",conseil_general
+"chnowa el ard el behya lel zitoun?",conseil_general
+"kifech na3mel zit behi fil m3asra?",conseil_general
+"el zbir el kbir walla el sghir?",conseil_general
+"nkhallet el zitoun m3a sjar okhrin?",conseil_general
+"chnowa el far9 bin zit vierge w lampante?",conseil_general
+"comment améliorer le rendement de mes oliviers?",conseil_general
+"quel sol convient à l'olivier?",conseil_general
+"conseils pour produire une huile de qualité",conseil_general
+"taille sévère ou légère pour l'olivier?",conseil_general
+"كيفاش نزيد في الصابة متاع الزيتون؟",conseil_general
+"شنوة الأرض الباهية للزيتون؟",conseil_general
+"كيفاش نعمل زيت باهي في المعصرة؟",conseil_general
+"الزبير الكبير ولا الصغير؟",conseil_general
+"شنوة أحسن طريقة للغراسة؟",conseil_general
+"kifech nchouf zitouni s7i7 w behi?",conseil_general
+"el fitoura tenfa3 smad?",conseil_general
+"chnowa na3mel 9bal el chta lel zitoun?",conseil_general
+"ahla w sahla",salutation
+"slm",salutation
+"cc",salutation
+"bonjour zitouna",salutation
+"aslema, labes 3lik?",salutation
+"sa7a lik",salutation
+"barcha merci",salutation
+"bye",salutation
+"bonne journée",salutation
+"tasba7 3la khir",salutation
+"أهلا و سهلا",salutation
+"صحة ليك",salutation
+"باي",salutation
+"تصبح على خير",salutation
+"عسلامة لاباس عليك؟",salutation
+"ya3tik saha 3al m3awna",salutation
+"chkoun 9a3ed yjeweb?",salutation
+"merci pour l'aide",salutation
+"9adech el kera mta3 dar fi tunis?",hors_sujet
+"kifech na3mel cv?",hors_sujet
+"chnowa a7sen restaurant fi sousse?",hors_sujet
+"el match mta3 el espérance wa9tech?",hors_sujet
+"9adech soum el essence?",hors_sujet
+"nheb nsafer l france, chnowa lazem?",hors_sujet
+"chkoun ghanna had el ghneya?",hors_sujet
+"a3tini blague",hors_sujet
+"قداش الكراء متاع دار في تونس؟",hors_sujet
+"كيفاش نعمل سي في؟",hors_sujet
+"الماتش متاع الترجي وقتاش؟",hors_sujet
+"قداش سوم الإيسونس؟",hors_sujet
+"chnowa a7sen laptop?",hors_sujet
+"comment faire un CV?",hors_sujet
+"horaires de la poste à sfax",hors_sujet
+"quel temps fait-il à londres?",hors_sujet
+"je veux apprendre l'anglais",hors_sujet
+"el bank wa9tech y7el?",hors_sujet

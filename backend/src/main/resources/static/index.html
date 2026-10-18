@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zitouna AI · Backend</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --olive: #5b6b2f; --olive-dark: #3f4a1f; --olive-light: #eef1e3; --bg: #f7f6f1; --surface: #fff;
+      --text: #1f2318; --muted: #6b6f63; --border: #dfe0d6; --danger: #b3261e; --danger-bg: #fde2df;
+      --warn: #7a5a00; --warn-bg: #fff4d6; --ok: #2e6b2f; --ok-bg: #e3f1df; --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); }
+    a { color: var(--olive); }
+    header { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; padding: .75rem 1rem; background: var(--olive-dark); color: #fff; }
+    header .brand { font-weight: 700; }
+    header nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-left: auto; }
+    header nav a { color: #fff; opacity: .85; text-decoration: none; }
+    header nav a:hover { opacity: 1; text-decoration: underline; }
+    main { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    h1 { margin: 0 0 .25rem; }
+    h2 { margin: 2rem 0 .75rem; font-size: 1.2rem; }
+    .muted { color: var(--muted); }
+    .hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+    .summary { padding: .5rem .9rem; border-radius: 999px; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: .4rem; }
+    .card h3 { margin: 0; font-size: 1rem; display: flex; align-items: center; gap: .5rem; }
+    .big { font-size: 1.5rem; font-weight: 700; color: var(--olive-dark); }
+    .pill { display: inline-block; font-size: .75rem; font-weight: 600; padding: .15rem .55rem; border-radius: 999px; }
+    .ok { background: var(--ok-bg); color: var(--ok); }
+    .warn { background: var(--warn-bg); color: var(--warn); }
+    .down { background: var(--danger-bg); color: var(--danger); }
+    .id { background: var(--olive); color: #fff; border-radius: 6px; padding: .05rem .4rem; font-size: .8rem; }
+    .row { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+    .table-wrap { overflow-x: auto; border-radius: var(--radius); }
+    table { width: 100%; min-width: 640px; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-size: .9rem; }
+    th, td { text-align: left; padding: .5rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { background: var(--olive-light); }
+    tr.group td { background: #fafaf6; font-weight: 600; color: var(--olive-dark); }
+    code { font-family: ui-monospace, Consolas, monospace; font-size: .85rem; }
+    pre { background: var(--text); color: var(--olive-light); padding: .8rem 1rem; border-radius: 8px; overflow-x: auto; margin: 0; }
+    pre code { font-size: .8rem; }
+    .method { font-family: ui-monospace, Consolas, monospace; font-size: .75rem; font-weight: 700; padding: .1rem .4rem; border-radius: 4px; color: #fff; }
+    .GET { background: #2f6fa8; } .POST { background: #3d8b40; } .PUT { background: #b07a12; } .DELETE { background: var(--danger); }
+    ol li { margin-bottom: .4rem; }
+    .btn { background: var(--olive); color: #fff; border: none; border-radius: 6px; padding: .5rem 1rem; font: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
+    .btn-ghost { background: transparent; color: var(--olive); border: 1px solid var(--olive); }
+    .actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .75rem; }
+    footer { margin-top: 2rem; font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">🫒 Zitouna AI · Backend Spring Boot</span>
+    <nav>
+      <a href="api/status" target="_blank" rel="noopener">/api/status (JSON)</a>
+      <a href="actuator/health" target="_blank" rel="noopener">Health</a>
+      <a id="app-link" href="http://localhost:4200">Application ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Backend Zitouna AI</h1>
+        <p class="muted">API REST Spring Boot : authentification JWT, parcelles, historique, et orchestration des 6 modules IA.</p>
+        <div class="actions">
+          <a class="btn" id="admin-button" href="http://localhost:4200/admin">Back-office admin</a>
+          <a class="btn btn-ghost" id="app-button" href="http://localhost:4200">Ouvrir l'application</a>
+          <button class="btn btn-ghost" id="refresh" type="button">Actualiser l'état</button>
+        </div>
+      </div>
+      <span id="summary" class="summary warn">Vérification…</span>
+    </div>
+
+    <h2>État de la plateforme</h2>
+    <div class="grid" id="platform">
+      <div class="card"><h3>Backend</h3><span class="muted">chargement…</span></div>
+    </div>
+
+    <h2>Modules IA (services FastAPI)</h2>
+    <div class="grid" id="modules"></div>
+
+    <h2>Appeler l'API (PowerShell)</h2>
+    <div class="card">
+      <p class="muted">Toutes les routes sauf <code>/api/auth/**</code> et <code>/api/status</code> demandent le jeton JWT reçu à la connexion.</p>
+      <pre><code># 1. Se connecter (ou /api/auth/register avec fullName) : on garde le jeton
+$auth = Invoke-RestMethod -Method Post -Uri http://localhost:8080/api/auth/login -ContentType 'application/json' `
+        -Body '{"email":"vous@exemple.tn","password":"votre-mot-de-passe"}'
+$h = @{ Authorization = "Bearer $($auth.token)" }
+
+# 2. Appeler les routes protégées
+Invoke-RestMethod http://localhost:8080/api/parcels -Headers $h
+Invoke-RestMethod "http://localhost:8080/api/parcels/1/irrigation?days=7" -Headers $h      # M2
+Invoke-RestMethod "http://localhost:8080/api/ai/price?horizonWeeks=12" -Headers $h         # M4</code></pre>
+    </div>
+
+    <h2>Routes de l'API</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Méthode</th><th>Route</th><th>Rôle</th><th>Module</th></tr></thead>
+      <tbody id="routes"></tbody>
+    </table></div>
+
+    <footer class="muted" id="footer">—</footer>
+  </main>
+
+  <script>
+    // Host ports of the AI services in docker-compose.yml (8001..8006).
+    const MODULE_PORTS = { M1: 8001, M2: 8002, M3: 8003, M4: 8004, M5: 8005, M6: 8006 };
+    const ROUTES = [
+      ['Authentification (public)'],
+      ['POST', '/api/auth/register', 'Créer un compte → jeton JWT', '—'],
+      ['POST', '/api/auth/login', 'Se connecter → jeton JWT', '—'],
+      ['GET', '/api/users/me', 'Utilisateur connecté', '—'],
+      ['Parcelles'],
+      ['GET', '/api/parcels', 'Mes parcelles', '—'],
+      ['POST', '/api/parcels', 'Créer une parcelle', '—'],
+      ['GET', '/api/parcels/{id}', 'Une parcelle (GET, PUT, DELETE)', '—'],
+      ['Intelligence artificielle'],
+      ['POST', '/api/ai/disease', 'Photo de feuille → maladie + conseil', 'M1'],
+      ['GET', '/api/parcels/{id}/irrigation?days=7', 'Plan d\'irrigation + alertes gel / canicule', 'M2'],
+      ['GET', '/api/parcels/{id}/yield', 'Récolte estimée', 'M3'],
+      ['GET', '/api/ai/price?horizonWeeks=8&quantityKg=', 'Prévision du prix + vendre / stocker', 'M4'],
+      ['POST', '/api/ai/chat', 'Question en derja → bon module', 'M5'],
+      ['POST', '/api/parcels/{id}/count-trees', 'Image de la parcelle → nombre d\'arbres', 'M6'],
+      ['POST', '/api/parcels/{id}/harvest-plan', 'Plan de récolte complet', 'M6 → M3 → M4'],
+      ['Historique et supervision'],
+      ['GET', '/api/history', 'Historique des prédictions', '—'],
+      ['GET', '/api/status', 'État du backend, de la base et des modules (public)', '—'],
+    ];
+
+    const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+    function renderRoutes() {
+      const body = document.getElementById('routes');
+      for (const r of ROUTES) {
+        const tr = el('tr');
+        if (r.length === 1) { tr.className = 'group'; const td = el('td', '', r[0]); td.colSpan = 4; tr.append(td); }
+        else {
+          const m = el('td'); m.append(el('span', 'method ' + r[0], r[0]));
+          const p = el('td'); p.append(el('code', '', r[1]));
+          tr.append(m, p, el('td', '', r[2]), el('td', '', r[3]));
+        }
+        body.append(tr);
+      }
+    }
+
+    function duration(seconds) {
+      const h = Math.floor(seconds / 3600), m = Math.floor((seconds % 3600) / 60);
+      return h ? `${h} h ${m} min` : `${m} min ${seconds % 60} s`;
+    }
+
+    function card(title, pill, pillClass, lines) {
+      const c = el('div', 'card');
+      const head = el('div', 'row'); head.append(el('h3', '', title), el('span', 'pill ' + pillClass, pill));
+      c.append(head);
+      for (const [cls, text] of lines) c.append(el(cls === 'big' ? 'span' : 'span', cls, text));
+      return c;
+    }
+
+    function renderPlatform(s) {
+      const up = s.modules.filter((m) => m.up).length;
+      const real = s.modules.filter((m) => m.modelLoaded === true).length;
+      const box = document.getElementById('platform');
+      box.replaceChildren(
+        card('Backend', 'En ligne', 'ok', [
+          ['big', 'Spring Boot ' + s.application.springBootVersion],
+          ['muted', 'Java ' + s.application.javaVersion + ' · version ' + s.application.version],
+          ['muted', 'Démarré depuis ' + duration(s.application.uptimeSeconds)],
+        ]),
+        card('Base de données', s.database.up ? 'En ligne' : 'Hors ligne', s.database.up ? 'ok' : 'down', [
+          ['big', s.database.product ?? '—'],
+          ['muted', s.database.version ? 'version ' + s.database.version.split(' ')[0] : 'connexion impossible'],
+          ['muted', 'Schéma géré par Flyway'],
+        ]),
+        card('Modules IA', `${up} / ${s.modules.length} en ligne`, up === s.modules.length ? 'ok' : up ? 'warn' : 'down', [
+          ['big', `${real} modèle${real > 1 ? 's' : ''} réel${real > 1 ? 's' : ''}`],
+          ['muted', `${up - real} en mode démo, ${s.modules.length - up} hors ligne`],
+        ]),
+      );
+      const summary = document.getElementById('summary');
+      const allOk = s.database.up && up === s.modules.length;
+      summary.textContent = allOk ? '✅ Tout fonctionne' : `⚠️ ${s.modules.length - up + (s.database.up ? 0 : 1)} service(s) hors ligne`;
+      summary.className = 'summary ' + (allOk ? 'ok' : 'warn');
+    }
+
+    function renderModules(modules) {
+      const box = document.getElementById('modules');
+      box.replaceChildren(...modules.map((m) => {
+        const c = el('div', 'card');
+        const head = el('div', 'row');
+        const title = el('h3'); title.append(el('span', 'id', m.id), document.createTextNode(m.name));
+        const [label, cls] = !m.up ? ['Hors ligne', 'down'] : m.modelLoaded ? ['Modèle réel', 'ok'] : ['Mode démo', 'warn'];
+        head.append(title, el('span', 'pill ' + cls, label));
+        c.append(head, el('span', 'muted', m.type));
+        c.append(el('span', 'muted', m.up ? `Répond en ${m.latencyMs} ms` : m.error));
+        const link = el('a', '', 'État du service (/health) ↗');
+        link.href = `${location.protocol}//${location.hostname}:${MODULE_PORTS[m.id]}/health`;
+        link.target = '_blank'; link.rel = 'noopener';
+        c.append(link);
+        return c;
+      }));
+    }
+
+    async function refresh() {
+      const footer = document.getElementById('footer');
+      try {
+        const res = await fetch('api/status', { headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const s = await res.json();
+        renderPlatform(s);
+        renderModules(s.modules);
+        footer.textContent = 'Dernière vérification : ' + new Date(s.checkedAt).toLocaleTimeString('fr-FR') + ' · actualisation automatique toutes les 15 s.';
+      } catch (e) {
+        footer.textContent = 'Impossible de lire /api/status (' + e.message + ').';
+      }
+    }
+
+    for (const id of ['app-link', 'app-button']) {
+      document.getElementById(id).href = `${location.protocol}//${location.hostname}:4200`;
+    }
+    document.getElementById('admin-button').href = `${location.protocol}//${location.hostname}:4200/admin`;
+    document.getElementById('refresh').addEventListener('click', refresh);
+    renderRoutes();
+    refresh();
+    setInterval(refresh, 15000);
+  </script>
+</body>
+</html>

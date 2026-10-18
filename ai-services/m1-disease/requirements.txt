@@ -1,0 +1,11 @@
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+pillow==12.3.0
+
+# Modèle réel (TorchScript + Grad-CAM). Roues CPU : image Docker ~4x plus petite que CUDA.
+# torch >= 2.11 obligatoire : model.pt est tracé avec torch 2.11 (TorchScript n'est pas
+# rétro-compatible). torchvision 0.26 = version appariée.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0
+torchvision==0.26.0

@@ -1,0 +1,117 @@
+# Whole stack:      docker compose up --build
+# Only what you need (e.g. DB + your AI service, backend from IntelliJ):
+#                   docker compose up postgres m1-disease
+# App: http://localhost:4200 · Backend: http://localhost:8080
+# Port already taken on your machine? Change DB_PORT / BACKEND_PORT / FRONTEND_PORT in .env
+
+x-ai-service: &ai-service
+  restart: unless-stopped
+  volumes:
+    - ./models:/models:ro # trained weights, shared via Drive (not in Git)
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: zitouna
+      POSTGRES_USER: ${DB_USER:-zitouna}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-zitouna}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-zitouna} -d zitouna"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/zitouna
+      DB_USER: ${DB_USER:-zitouna}
+      DB_PASSWORD: ${DB_PASSWORD:-zitouna}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env (copy .env.example)}
+      CORS_ORIGINS: http://localhost:4200
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      AI_M1_URL: http://m1-disease:8000
+      AI_M2_URL: http://m2-irrigation:8000
+      AI_M3_URL: http://m3-yield:8000
+      AI_M4_URL: http://m4-price:8000
+      AI_M5_URL: http://m5-assistant:8000
+      AI_M6_URL: http://m6-tree-count:8000
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT:-4200}:80"
+
+  m1-disease:
+    <<: *ai-service
+    build: ./ai-services/m1-disease
+    environment:
+      MODEL_DIR: /models/m1
+    ports:
+      - "8001:8000"
+
+  m2-irrigation:
+    <<: *ai-service
+    build: ./ai-services/m2-irrigation
+    environment:
+      MODEL_DIR: /models/m2
+    ports:
+      - "8002:8000"
+
+  m3-yield:
+    <<: *ai-service
+    build: ./ai-services/m3-yield
+    environment:
+      MODEL_DIR: /models/m3
+    ports:
+      - "8003:8000"
+
+  m4-price:
+    <<: *ai-service
+    build: ./ai-services/m4-price
+    environment:
+      MODEL_DIR: /models/m4
+    ports:
+      - "8004:8000"
+
+  m5-assistant:
+    <<: *ai-service
+    build: ./ai-services/m5-assistant
+    environment:
+      MODEL_DIR: /models/m5_ensemble # TF-IDF + SetFit ensemble (~1 GB, loaded once at startup)
+      PORT: 8000
+      # LLM writing the chat replies, rotation in this order (see app/llm.py). No key -> template replies.
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      XAI_API_KEY: ${XAI_API_KEY:-}
+      LLM_CHAIN: ${LLM_CHAIN:-}
+    ports:
+      - "8005:8000"
+
+  m6-tree-count:
+    <<: *ai-service
+    build: ./ai-services/m6-tree-count
+    environment:
+      MODEL_DIR: /models/m6
+    ports:
+      - "8006:8000"
+
+volumes:
+  pgdata:

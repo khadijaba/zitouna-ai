@@ -1,0 +1,9 @@
+# Runs the M2 / M4 training notebooks without installing Python on your machine.
+#   docker build -t zitounai-train -f notebooks/Dockerfile.train notebooks
+#   docker run --rm -v "${PWD}:/repo" -w /repo/notebooks/m2_irrigation zitounai-train \
+#       jupyter nbconvert --to notebook --execute train_m2.ipynb --output outputs/train_m2_executed.ipynb
+FROM python:3.12-slim
+ENV PYTHONDONTWRITEBYTECODE=1 PIP_NO_CACHE_DIR=1 PIP_DEFAULT_TIMEOUT=300
+COPY requirements-train.txt /tmp/
+RUN pip install --retries 10 -r /tmp/requirements-train.txt
+WORKDIR /repo

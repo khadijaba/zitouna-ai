@@ -1,0 +1,31 @@
+# Owners are automatically requested as reviewers on PRs touching their files.
+# For now @azizdlissiesprit owns everything: to give a module to a teammate, replace the username
+# on its lines (an unknown username makes GitHub ignore that line).
+# The last matching line wins.
+
+*                               @azizdlissiesprit
+
+# AI modules: service + notebook belong to the module owner
+/ai-services/m1-disease/        @azizdlissiesprit
+/notebooks/m1_disease/          @azizdlissiesprit
+/ai-services/m2-irrigation/     @azizdlissiesprit
+/notebooks/m2_irrigation/       @azizdlissiesprit
+/ai-services/m3-yield/          @azizdlissiesprit
+/notebooks/m3_yield/            @azizdlissiesprit
+/ai-services/m4-price/          @azizdlissiesprit
+/notebooks/m4_price/            @azizdlissiesprit
+/ai-services/m5-assistant/      @azizdlissiesprit
+/notebooks/m5_assistant/        @azizdlissiesprit
+/ai-services/m6-tree-count/     @azizdlissiesprit
+/notebooks/m6_tree_count/       @azizdlissiesprit
+
+# Cross-cutting roles
+/backend/                       @azizdlissiesprit
+/frontend/                      @azizdlissiesprit
+/docs/                          @azizdlissiesprit
+/docker-compose.yml             @azizdlissiesprit
+**/Dockerfile                   @azizdlissiesprit
+/.github/                       @azizdlissiesprit
+
+# Changing the contract affects everyone: backend + frontend owners must approve
+/docs/api-contract.md           @azizdlissiesprit

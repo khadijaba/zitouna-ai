@@ -1,0 +1,56 @@
+# ---- Secrets ----
+.env
+*.env.local
+
+# ---- Demo videos: too heavy for Git, shared separately ----
+docs/*.mp4
+
+# ---- Data & model weights: shared via Google Drive, NEVER in Git ----
+data/raw/**
+data/processed/**
+!data/**/.gitkeep
+models/*
+!models/README.md
+notebooks/**/outputs/
+notebooks/**/field_test/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.keras
+*.ckpt
+*.safetensors
+*.joblib
+*.pkl
+*.tflite
+mlruns/
+mlartifacts/
+runs/
+wandb/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# ---- Java (see also backend/.gitignore) ----
+target/
+
+# ---- Node / Angular (see also frontend/.gitignore) ----
+node_modules/
+dist/
+.angular/
+
+# ---- IDEs & OS ----
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,49 @@
+name: Task
+description: A piece of work for the roadmap (data, model, API, screen, report…)
+labels: ["type:task"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - M1 · Disease
+        - M2 · Irrigation
+        - M3 · Yield
+        - M4 · Price
+        - M5 · Assistant
+        - M6 · Trees
+        - Backend
+        - Frontend
+        - Infra / Docker / CI
+        - Report / demo
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      options:
+        - "1 · Data (W1-W2)"
+        - "2 · Baselines (W3-W4)"
+        - "3 · Models + APIs (W5-W6)"
+        - "4 · Integration (W7-W8)"
+        - "5 · Finalisation (W9-W10)"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs to be done
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      placeholder: |
+        - [ ] Notebook runs end to end
+        - [ ] Metric vs baseline reported
+        - [ ] PR merged into develop
+    validations:
+      required: true

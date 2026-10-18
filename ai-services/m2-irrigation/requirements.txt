@@ -1,0 +1,4 @@
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+# LSTM inference in NumPy (no PyTorch in the image); weather from Open-Meteo with the standard library.
+numpy==2.5.3

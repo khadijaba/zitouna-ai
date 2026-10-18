@@ -1,0 +1,18 @@
+# CPU-only torch wheels: much smaller Docker image, no GPU needed for inference.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+pydantic==2.14.0
+numpy==2.5.3
+pandas==3.0.6
+joblib==1.6.0
+httpx==0.28.1  # LLM providers (OpenAI-compatible APIs)
+
+# MUST match "sklearn_version" in models/m5_ensemble/config.json, or joblib.load(tfidf.joblib) may fail.
+scikit-learn==1.6.1
+
+torch==2.14.1
+setfit==1.2.0
+sentence-transformers==6.1.0
+transformers==5.19.0

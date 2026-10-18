@@ -1,0 +1,37 @@
+{
+  "low_confidence": {
+    "description": "La photo ne permet pas un diagnostic fiable (flou, feuille trop petite, mauvaise lumière ou hors cadre).",
+    "advice": "Photo peu claire, reprenez-la : une seule feuille bien à plat, à environ 20 cm, sur fond simple et de préférence au soleil. Aucun diagnostic n'est donné tant que la photo n'est pas lisible.",
+    "warning": "Ne traitez jamais votre verger sur la base d'un diagnostic incertain."
+  },
+  "classes": {
+    "healthy": {
+      "labelFr": "Feuille saine",
+      "description": "Aucun symptôme de maladie détecté sur cette feuille.",
+      "advice": "Aucune maladie détectée sur cette feuille. Continuez à surveiller le verger régulièrement, surtout après les périodes humides (automne, printemps).",
+      "warning": "Une seule feuille ne représente pas tout l'arbre : vérifiez plusieurs feuilles de différentes parties de l'arbre avant de conclure.",
+      "source": "À valider par un agronome (INRAT / ONH)."
+    },
+    "peacock_spot": {
+      "labelFr": "Œil de paon",
+      "description": "Taches circulaires brun-vert à halo jaune sur le dessus de la feuille, causées par un champignon (Venturia oleaginea). Fréquent après les automnes humides.",
+      "advice": "Traitement préventif à base de cuivre (bouillie bordelaise) en automne et en fin d'hiver. Taillez pour aérer la couronne et laisser passer la lumière, et ramassez/détruisez les feuilles tombées pour limiter la contamination.",
+      "warning": "Respectez les doses et les délais avant récolte, évitez de traiter par forte chaleur ou vent, et portez gants et masque. En cas de doute sur la gravité, montrez la feuille à un technicien.",
+      "source": "À valider par un agronome (INRAT / ONH)."
+    },
+    "aculus_olearius": {
+      "labelFr": "Aculus olearius (acarien)",
+      "description": "Acarien microscopique qui déforme les jeunes feuilles et leur donne un aspect plissé ou bronzé, surtout au printemps.",
+      "advice": "Surveillez les jeunes pousses au printemps ; un traitement au soufre mouillable peut être envisagé en cas de forte attaque. Améliorez l'aération par une taille légère et demandez l'avis d'un technicien avant de traiter.",
+      "warning": "Le soufre brûle le feuillage par forte chaleur (au-dessus d'environ 30 °C) : traitez tôt le matin ou le soir. Les acariens utiles sont aussi sensibles aux traitements : ne traitez que si nécessaire.",
+      "source": "À valider par un agronome (INRAT / ONH)."
+    },
+    "olive_knot": {
+      "labelFr": "Tuberculose de l'olivier",
+      "description": "Boursouflures (nodosités) brunes sur branches et rameaux, causées par une bactérie (Pseudomonas savastanoi) qui entre par les plaies de taille, la grêle ou le gel.",
+      "advice": "Coupez et brûlez les rameaux atteints (10-15 cm sous la lésion), désinfectez les outils de taille entre chaque coupe, puis appliquez un produit cuprique après la taille, la grêle ou le gel.",
+      "warning": "Ne taillez jamais par temps humide : la bactérie se propage dans l'eau. Évitez les blessures inutiles aux branches.",
+      "source": "À valider par un agronome (INRAT / ONH)."
+    }
+  }
+}
