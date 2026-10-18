@@ -23,6 +23,7 @@ PROVIDERS = {
     "groq": ("https://api.groq.com/openai/v1", "GROQ_API_KEY"),
     "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY"),
     "xai": ("https://api.x.ai/v1", "XAI_API_KEY"),
+    "zai": ("https://api.z.ai/api/paas/v4", "ZAI_API_KEY"),  # GLM models (Zhipu AI), free Flash tier
 }
 
 # Tried in this order. "extra" = provider/model specific parameters.
@@ -30,6 +31,8 @@ PROVIDERS = {
 # The lite models do not think and reject that parameter. Same for qwen on Groq (~0.4 s per answer);
 # groq/openai/gpt-oss-120b was tried and left out: it invented figures and mixed scripts.
 # gemini-2.5-flash was retired by Google for new users (HTTP 404, October 2026): replaced by gemini-3.8-flash.
+# gemini-3.7-flash is asked first only by M2, glm-4.5-flash only as M4's backup (see explain.py); GLM thinks by
+# default, thinking=disabled keeps it faster (free tier measured at 3.7-12 s with frequent HTTP 429).
 DEFAULT_CHAIN = [
     {"provider": "gemini", "model": "gemini-3.5-flash", "extra": {"reasoning_effort": "none"}},
     {"provider": "groq", "model": "qwen/qwen3.8-27b", "extra": {"reasoning_effort": "none"}},
@@ -37,6 +40,8 @@ DEFAULT_CHAIN = [
     {"provider": "gemini", "model": "gemini-3.5-flash-lite"},
     {"provider": "gemini", "model": "gemini-flash-lite-latest"},
     {"provider": "openrouter", "model": "meta-llama/llama-3.3-70b-instruct:free"},
+    {"provider": "gemini", "model": "gemini-3.7-flash", "extra": {"reasoning_effort": "none"}},
+    {"provider": "zai", "model": "glm-4.5-flash", "extra": {"thinking": {"type": "disabled"}}},
 ]
 
 COOLDOWN_S = {"rate_limited": 60, "unavailable": 20, "misconfigured": 600}
@@ -95,12 +100,16 @@ class LlmRouter:
         return bool(self.models)
 
     def complete(self, messages: list[dict], temperature: float = 0.3,
-                 accept: Callable[[str], bool] | None = None, prefer: str | None = None) -> Completion:  # fmt: skip
+                 accept: Callable[[str], bool] | None = None,
+                 prefer: str | list[str] | None = None) -> Completion:  # fmt: skip
         """accept: optional check of the answer text; a rejected answer moves on to the next model.
-        prefer: model name tried first (e.g. the LLM dedicated to a module); the rest of the chain stays as fallback."""
+        prefer: model name(s) tried first, in this order (e.g. the LLM dedicated to a module, then its backup);
+        the rest of the chain stays as fallback."""
+        first = [prefer] if isinstance(prefer, str) else list(prefer or [])
+        rank = {name: i for i, name in enumerate(first)}
         started = time.monotonic()
         errors = []
-        for m in sorted(self.models, key=lambda m: m.model != prefer):
+        for m in sorted(self.models, key=lambda m: rank.get(m.model, len(first))):
             now = time.monotonic()
             if m.cooldown_until > now:
                 errors.append(f"{m.name}: cooling down")

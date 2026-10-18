@@ -30,14 +30,19 @@ LANGUAGES = {
 }
 
 # LLM dedicated to each module, chosen for what the module needs; the rest of the chain stays as fallback.
+# Six different models: no two modules share the same one.
 MODULE_LLM = {
     "M1": "gemini-3.5-flash",  # diseases: the most capable model, careful about treatments
-    "M2": "gemini-3.8-flash",  # irrigation: newest Flash, reasons well on day-by-day number tables
+    "M2": "gemini-3.7-flash",  # irrigation: best derja on the day-by-day table in our comparison, ~3 s
     "M3": "gemini-flash-lite-latest",  # harvest: one short estimate, a light model is enough
-    "M4": "gemini-3.5-flash-lite",  # price: number-based advice at low cost
-    "M5": "gemini-3.5-flash",  # assistant: best derja in Arabic script
+    "M4": "gemini-3.5-flash-lite",  # price: number-based advice, 1.2 s, real derja (GLM measured: 3.7-12 s, 429s)
+    "M5": "gemini-3.8-flash",  # assistant: newest Flash, fluent derja in Arabic script
     "M6": "qwen/qwen3.8-27b",  # counting: a simple figure, fastest answer (Groq)
 }
+
+# Tried right after the dedicated LLM when it is missing (no key) or fails, before the rest of the chain:
+# GLM (Zhipu AI) is a third provider, so a Google outage or quota does not leave M4 without an explanation.
+MODULE_BACKUP = {"M4": "glm-4.5-flash"}
 
 # What each module computes, so the LLM reads the figures correctly.
 MODULE_CONTEXT = {
@@ -129,11 +134,16 @@ def template(req: ExplainRequest) -> str:
     )
 
 
+def dedicated(module: str) -> list[str]:
+    """The module's LLM, then its backup if it has one."""
+    return [MODULE_LLM[module], *([MODULE_BACKUP[module]] if module in MODULE_BACKUP else [])]
+
+
 def explain(router: LlmRouter, req: ExplainRequest) -> ExplainResponse:
     if router.enabled:
         accept = is_arabic_script if req.language == "derja" else None
         try:
-            done = router.complete(build_messages(req), temperature=0.3, accept=accept, prefer=MODULE_LLM[req.module])
+            done = router.complete(build_messages(req), temperature=0.3, accept=accept, prefer=dedicated(req.module))
             return ExplainResponse(explanation=done.text, provider=done.provider, model=done.model,
                                    latency_ms=done.latency_ms, fallback=False)  # fmt: skip
         except AllProvidersFailed:

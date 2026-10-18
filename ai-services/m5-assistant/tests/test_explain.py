@@ -6,7 +6,7 @@ import httpx
 import pytest
 from tests.test_llm import ARABIZI, OK, router_with
 
-from app.explain import MODULE_LLM, build_messages, compact, template
+from app.explain import MODULE_BACKUP, MODULE_LLM, build_messages, compact, template
 from app.schemas import ExplainRequest
 
 FR = {"choices": [{"message": {"content": "Arrosez 511 litres par arbre aujourd'hui."}, "finish_reason": "stop"}]}
@@ -114,6 +114,8 @@ CHAIN = [
     "gemini-3.8-flash",
     "gemini-3.5-flash-lite",
     "gemini-flash-lite-latest",
+    "gemini-3.7-flash",
+    "glm-4.5-flash",
 ]
 
 
@@ -143,4 +145,33 @@ def test_the_chain_takes_over_when_the_dedicated_llm_fails(client):
 def test_every_dedicated_llm_is_in_the_default_chain():
     from app.llm import DEFAULT_CHAIN
 
-    assert set(MODULE_LLM.values()) <= {entry["model"] for entry in DEFAULT_CHAIN}
+    chain = {entry["model"] for entry in DEFAULT_CHAIN}
+    assert set(MODULE_LLM.values()) <= chain and set(MODULE_BACKUP.values()) <= chain
+
+
+def test_each_module_has_a_different_llm():
+    assert len(set(MODULE_LLM.values())) == len(MODULE_LLM) == 6
+
+
+def test_m4_falls_back_to_glm_from_another_provider(client):
+    responses = {name: httpx.Response(200, json=FR) for name in CHAIN}
+    responses["gemini-3.5-flash-lite"] = httpx.Response(429)
+    router, calls = router_with(responses)
+    saved = with_router(client, router)
+    try:
+        res = client.post("/explain", json={"module": "M4", "result": RESULTS["M4"]})
+    finally:
+        client.app.state.explain_llm = saved
+    assert calls == ["gemini-3.5-flash-lite", "glm-4.5-flash"] and res.json()["model"] == "glm-4.5-flash"
+
+
+def test_m4_goes_to_the_chain_when_glm_has_no_key(client):
+    responses = {name: httpx.Response(200, json=FR) for name in CHAIN if name != "glm-4.5-flash"}
+    responses["gemini-3.5-flash-lite"] = httpx.Response(503)
+    router, calls = router_with(responses)
+    saved = with_router(client, router)
+    try:
+        res = client.post("/explain", json={"module": "M4", "result": RESULTS["M4"]})
+    finally:
+        client.app.state.explain_llm = saved
+    assert calls == ["gemini-3.5-flash-lite", "gemini-3.5-flash"] and res.json()["model"] == "gemini-3.5-flash"
